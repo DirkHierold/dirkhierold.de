@@ -1,10 +1,10 @@
-# Peter Steinberger's Personal Website
+# Dirk Hierold's Personal Website
 
 This is the source code for my personal website, built with [Astro](https://astro.build) and deployed on [Vercel](https://vercel.com).
 
 ## About
 
-I'm Peter Steinberger, an iOS developer, entrepreneur, and open source contributor. This website hosts my personal blog and information about my work.
+I'm Dirk Hierold, a passionate game developer with a deep fascination for artificial intelligence. This website hosts my personal blog and information about my work in game development and AI exploration.
 
 ## Project Structure
 

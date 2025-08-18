@@ -1,7 +1,7 @@
 ---
 title: "Welcome to My Digital Journey"
 description: "Starting fresh with a new website to share my experiences in game development, AI exploration, and the balance between technology and family life."
-pubDate: 2025-08-18T10:00:00+02:00
+pubDatetime: 2025-08-18T10:00:00+02:00
 tags: ["personal", "game-development", "ai", "introduction"]
 ---
 

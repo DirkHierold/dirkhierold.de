@@ -57,16 +57,31 @@ const backUrl = SITE.showBackButton ? `${Astro.url.pathname}` : "/";
           return term;
         },
         processResult: function (result: any) {
-          // Remove trailing slashes from URLs to match trailingSlash: "never"
-          if (result.url && result.url.endsWith('/') && result.url !== '/') {
-            result.url = result.url.slice(0, -1);
+          // Function to fix URLs by removing trailing slashes before anchors
+          const fixUrl = (url: string) => {
+            if (!url) return url;
+            
+            // Handle URLs with anchors (e.g., "/path/#anchor" -> "/path#anchor")
+            if (url.includes('#')) {
+              const [path, anchor] = url.split('#');
+              const fixedPath = path.endsWith('/') && path !== '/' ? path.slice(0, -1) : path;
+              return `${fixedPath}#${anchor}`;
+            }
+            
+            // Handle regular URLs
+            return url.endsWith('/') && url !== '/' ? url.slice(0, -1) : url;
+          };
+          
+          // Fix main result URL
+          if (result.url) {
+            result.url = fixUrl(result.url);
           }
           
-          // Process sub-results (anchor links) as well
+          // Fix sub-results (anchor links) URLs
           if (result.sub_results && Array.isArray(result.sub_results)) {
             result.sub_results = result.sub_results.map((subResult: any) => {
-              if (subResult.url && subResult.url.endsWith('/') && subResult.url !== '/') {
-                subResult.url = subResult.url.slice(0, -1);
+              if (subResult.url) {
+                subResult.url = fixUrl(subResult.url);
               }
               return subResult;
             });

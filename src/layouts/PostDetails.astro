@@ -337,10 +337,35 @@ const wordCount = post.body.split(/\s+/).length;
   }
   backToTop();
 
-  /* Go to page start after page swap */
-  document.addEventListener("astro:after-swap", () =>
-    window.scrollTo({ left: 0, top: 0, behavior: "instant" }),
-  );
+  /* Handle anchor scrolling */
+  function handleAnchorScrolling() {
+    if (window.location.hash) {
+      setTimeout(() => {
+        const element = document.querySelector(window.location.hash);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 100); // Small delay to ensure page is fully rendered
+    } else {
+      // Otherwise scroll to top
+      window.scrollTo({ left: 0, top: 0, behavior: "instant" });
+    }
+  }
+
+  /* Handle scrolling after page swap */
+  document.addEventListener("astro:after-swap", handleAnchorScrolling);
+
+  /* Handle initial page load with anchor */
+  document.addEventListener("astro:page-load", () => {
+    if (window.location.hash) {
+      setTimeout(() => {
+        const element = document.querySelector(window.location.hash);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 100);
+    }
+  });
 
   /** Add lazy loading to all images in the article */
   function addLazyLoading() {

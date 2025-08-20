@@ -7,10 +7,10 @@ import loadGoogleFonts from "../loadGoogleFont";
  * 
  * This template generates social media preview cards for blog posts.
  * 
- * CUSTOMIZATION: We override the default behavior to show "steipete.me" 
- * on the right side instead of the author name (Peter Steinberger).
+ * CUSTOMIZATION: We override the default behavior to show "dirkhierold.de" 
+ * on the right side instead of the author name (Dirk Hierold).
  * This avoids redundancy since the author name already appears on the left
- * with "by Peter Steinberger".
+ * with "by Dirk Hierold".
  */
 
 // const markup = html`<div
@@ -213,7 +213,7 @@ export default async (post) => {
                             type: "span",
                             props: {
                               style: { overflow: "hidden", fontWeight: "bold" },
-                              children: "steipete.me",
+                              children: "dirkhierold.de",
                             },
                           },
                         ],
@@ -232,7 +232,7 @@ export default async (post) => {
       height: 630,
       embedFont: true,
       fonts: await loadGoogleFonts(
-        post.data.title + post.data.author + "steipete.me" + "by",
+        post.data.title + post.data.author + "dirkhierold.de" + "by",
       ),
     },
   );

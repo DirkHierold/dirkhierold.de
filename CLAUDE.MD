@@ -10,12 +10,12 @@ This document contains important instructions and notes for Claude when working 
 - Do not write or propose new blog content unless specifically requested
 - Only help with editing or fixing existing posts when asked
 
-### NEVER MERGE PULL REQUESTS
+### PULL REQUEST WORKFLOW
 
-- **NEVER MERGE PULL REQUESTS** - Even if explicitly asked to do so
-- Only the repository owner (steipete) should merge PRs through the GitHub web UI
-- Create PRs as requested, but do not use `gh pr merge` or similar commands
-- Always provide the PR URL so that steipete can review and merge manually
+- Before merging pull requests, show the actual state of the website locally and open it in the browser
+- If approved by the user, then merge the pull request
+- Create PRs as requested and provide the PR URL for review
+- Always demonstrate changes before merging
 
 ### USE GSED INSTEAD OF SED
 

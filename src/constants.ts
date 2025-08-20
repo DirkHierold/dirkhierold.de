@@ -3,21 +3,21 @@ import { SITE } from "./consts";
 export const SOCIALS = [
   {
     name: "Github",
-    href: "https://github.com/steipete",
+    href: "https://github.com/DirkHierold",
     linkTitle: ` ${SITE.title} on Github`,
     icon: "github",
     active: true,
   },
   {
     name: "X",
-    href: "https://x.com/steipete",
+    href: "https://x.com/DirkHierold",
     linkTitle: `${SITE.title} on X`,
     icon: "twitter",
     active: true,
   },
   {
     name: "Mail",
-    href: "mailto:peter@steipete.me",
+    href: "mailto:dirk@dirkhierold.de",
     linkTitle: `Send an email to ${SITE.title}`,
     icon: "mail",
     active: true,

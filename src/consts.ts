@@ -31,12 +31,12 @@ interface Site {
 
 // Site configuration
 export const SITE: Site = {
-  website: "https://steipete.me/",
-  author: "Peter Steinberger",
-  profile: "https://steipete.me/about",
+  website: "https://dirkhierold.de/",
+  author: "Dirk Hierold",
+  profile: "https://dirkhierold.de/about",
   desc: "AI-powered tools from Swift roots to web frontiers. Every commit lands on GitHub for you to fork & remix.",
-  title: "Peter Steinberger",
-  ogImage: "peter-avatar.jpg",
+  title: "Dirk Hierold",
+  ogImage: "dirk-avatar.jpg",
   lightAndDarkMode: true,
   postPerIndex: 10,
   postPerPage: 10,
@@ -46,7 +46,7 @@ export const SITE: Site = {
   editPost: {
     enabled: true,
     text: "Edit on GitHub",
-    url: "https://github.com/steipete/steipete.me/edit/main/",
+    url: "https://github.com/DirkHierold/dirkhierold.de/edit/main/",
   },
   dynamicOgImage: true,
   lang: "en",
@@ -71,11 +71,11 @@ export const NAV_LINKS: SocialLink[] = [
 // Social media links
 export const SOCIAL_LINKS: SocialLink[] = [
   {
-    href: "https://github.com/steipete",
+    href: "https://github.com/DirkHierold",
     label: "GitHub",
   },
   {
-    href: "https://twitter.com/steipete",
+    href: "https://twitter.com/DirkHierold",
     label: "Twitter",
   },
   {

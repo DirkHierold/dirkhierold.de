@@ -3,6 +3,7 @@ title: "A Day of Digital Transformation with Claude Code"
 description: "A detailed look at how Claude Code helped accomplish four major website updates: complete rebranding, navigation improvements, social media cleanup, and search functionality fixes."
 pubDatetime: 2025-08-20T18:00:00+02:00
 tags: ["claude-code", "web-development", "astro", "rebranding", "automation"]
+heroImage: "/assets/claude-code-transformation-hero.png"
 ---
 
 # A Day of Digital Transformation with Claude Code

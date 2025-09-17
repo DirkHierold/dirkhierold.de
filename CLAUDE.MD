@@ -1,117 +1,134 @@
-# Instructions for Claude
+<system_context>
+Dirk Hierold's personal website built with Astro, TailwindCSS, and React. This is a blog-focused static site featuring technical content, with emphasis on maintaining current dependencies and proper deployment workflows. Content management includes both markdown blog posts and dynamic components.
+</system_context>
 
-This document contains important instructions and notes for Claude when working on this project.
+<critical_notes>
+## MISSION CRITICAL RULES
 
-## CRITICAL GUIDELINES
+1. **ALWAYS USE LATEST DEPENDENCIES** - **NEVER DOWNGRADE DEPENDENCIES**. Always use the latest stable versions and proper tooling to check versions. Never guess or assume versions.
 
-### NEVER CREATE BLOG POSTS WITHOUT CONSENT
+2. **USE GSED INSTEAD OF SED** - **ALWAYS USE `gsed` INSTEAD OF `sed`** for better compatibility across platforms. `gsed` provides GNU sed features that are more consistent across Linux and macOS.
 
-- **NEVER CREATE BLOG POSTS WITHOUT EXPLICIT CONSENT** from steipete
-- Do not write or propose new blog content unless specifically requested
-- Only help with editing or fixing existing posts when asked
+3. **Development Server Limitation** - **DO NOT run `npm run dev`** in agent mode - this creates endless loops and stops the agent from working properly. Use `npm run build` to verify changes instead.
 
-### PULL REQUEST WORKFLOW
+4. **Pull Request Workflow** - Before merging pull requests, show the actual state of the website locally and open it in the browser. Always demonstrate changes before merging.
+</critical_notes>
 
-- Before merging pull requests, show the actual state of the website locally and open it in the browser
-- If approved by the user, then merge the pull request
-- Create PRs as requested and provide the PR URL for review
-- Always demonstrate changes before merging
+<paved_path>
+## ARCHITECTURE (PAVED PATH)
 
-### USE GSED INSTEAD OF SED
-
-- **ALWAYS USE `gsed` INSTEAD OF `sed`** - For better compatibility across platforms
-- `gsed` provides GNU sed features that are more consistent across Linux and macOS
-- If editing files with sed-like operations, use `gsed` to ensure reliable results
-
-### ALWAYS USE LATEST DEPENDENCIES
-
-- **NEVER DOWNGRADE DEPENDENCIES** - Always use the latest stable versions
-- **ALWAYS USE TOOLING TO CHECK VERSIONS** - Never guess or assume versions
-- Run `npm outdated` to see what packages need updating
-- Run `npm view [package] version` to check the latest published version
-- When fixing dependency issues, always upgrade to the latest compatible versions
-- Prioritize staying current with the ecosystem, even if it requires more work to adapt
-
-### IMPORTANT: Development Server Limitation
-
-- **DO NOT run `npm run dev`** in agent mode - this will create an endless loop and stop the agent from working properly
-- Instead, use `npm run build` to verify your changes
-
-## Development Process
-
-### Testing Changes
-
-To properly test changes, use these commands:
-
+### Dependency Management Workflow
 ```bash
-# Build the project (this is preferred over npm run dev in agent mode)
-npm run build
+# Check all outdated dependencies (MANDATORY before updates)
+npm outdated
 
-# If you need to preview the build (only do when specifically requested)
-npm run preview
+# Check latest version of specific package (MANDATORY for accuracy)
+npm view astro version
+npm view react version
+
+# Update all dependencies to latest (PREFERRED approach)
+npm update --latest
 ```
 
-### Project Structure
+### Pull Request Workflow
+1. **Show Changes** - Demonstrate website state locally in browser
+2. **User Approval** - Get explicit approval from user after demonstration  
+3. **Merge** - Only merge after approval received
+4. **Provide PR URL** - Always provide PR URL for review
 
-- `/src/content/blog/` - Contains all blog posts in markdown format
-- `/src/pages/` - Contains page templates and routing
-- `/src/components/` - Reusable UI components
+### Build Verification Process
+```bash
+# Build verification (PREFERRED over npm run dev in agent mode)
+npm run build
+
+# Preview build only when specifically requested
+npm run preview
+```
+</paved_path>
+
+<file_map>
+## FILE MAP
+- `/src/content/blog/` - All blog posts in markdown format with frontmatter
+- `/src/pages/` - Page templates and routing configuration
+- `/src/components/` - Reusable UI components (React-based)
 - `/src/layouts/` - Page layouts and templates
 - `/src/styles/` - CSS styles including Tailwind customizations
+- `/src/consts.ts` - Global site constants and configuration
+- `/public/assets/img/` - Blog post images organized by year/post structure
+- `/temp-repos/steipete.com/assets/img/` - Original image source location
+</file_map>
 
-### Common Tasks
+<patterns>
+## DEVELOPMENT PATTERNS
 
-1. **Adding a new blog post**:
+### Blog Post Creation Pattern
+```markdown
+---
+title: "Post Title"
+description: "Post description"
+pubDate: "YYYY-MM-DDTHH:MM:SS+HH:MM"
+tags: ["tag1", "tag2"]
+---
 
-   - Create a new markdown file in `/src/content/blog/`
-   - Include proper frontmatter (title, description, pubDate, etc.)
-   - Format dates in ISO-8601 format: `YYYY-MM-DDTHH:MM:SS+HH:MM`
-   - Format tags as arrays: `tags: ["tag1", "tag2"]`
+Content here...
+```
 
-2. **Modifying site configuration**:
+### Image Fix Pattern
+```bash
+# Locate original images
+find /temp-repos/steipete.com/assets/img/ -name "IMAGE.jpg"
 
-   - Edit `/src/consts.ts` for global site constants
+# Copy to public directory (maintain structure)
+cp /temp-repos/steipete.com/assets/img/YEAR/POST-NAME/IMAGE.jpg /public/assets/img/YEAR/POST-NAME/
 
-3. **Styling changes**:
+# Commit fixed images
+git add public/assets/img/
+git commit -m "fix: add missing blog post images"
+```
 
-   - Edit files in `/src/styles/` for global styling
-   - Use Tailwind classes in component templates for component-specific styling
+### Dependency Update Pattern
+```bash
+# Standard dependency update workflow
+npm outdated                    # Check what needs updating
+npm view astro version         # Verify latest versions
+npm update --latest            # Update to latest stable
+npm run build                  # Test build after updates
+# If build fails: diagnose and fix, NEVER downgrade
+```
 
-4. **Layout changes**:
+### Site Configuration Pattern
+```typescript
+// src/consts.ts - Global site constants
+export const SITE_TITLE = 'Site Title';
+export const SITE_DESCRIPTION = 'Site description';
+```
 
-   - Modify the appropriate layout files in `/src/layouts/`
+### Styling Pattern
+```css
+/* /src/styles/ - Global styling */
+/* Use Tailwind classes in components for component-specific styling */
+```
+</patterns>
 
-5. **Fixing broken images**:
+<critical_notes>
+## TECH STACK
 
-   - Blog posts reference images in the `/public/assets/img/` directory structure
-   - The original files can be found in `/temp-repos/steipete.com/assets/img/`
-   - Images must be copied to the matching public directory structure
-   - Fixed images should be committed to the repository
-   - Use `find` command to locate the original images
-   - Common image paths follow the pattern: `/assets/img/YEAR/POST-NAME/IMAGE.jpg`
-
-6. **Dependency Updates**:
-   - Always use proper tooling to check for latest versions:
-
-     ```bash
-     # Check all outdated dependencies
-     npm outdated
-
-     # Check latest version of a specific package
-     npm view astro version
-     npm view react version
-
-     # Update all dependencies to latest
-     npm update --latest
-     ```
-
-   - Test thoroughly after updating dependencies
-   - If a build fails after updates, diagnose the specific issue and FIX it properly
-   - NEVER resort to downgrading as a solution
-
-## Tech Stack
-
+### Current Versions
 - **Astro** (latest version) - Main framework
-- **TailwindCSS** - For styling
-- **React** - For interactive components (v18.2.0)
+- **TailwindCSS** - For styling  
+- **React** (v18.2.0) - For interactive components
 - **MDX** - For enhanced markdown support
+
+### Common Tasks Reference
+1. **Blog Posts**: Create in `/src/content/blog/` with proper frontmatter and ISO-8601 dates
+2. **Site Config**: Modify `/src/consts.ts` for global constants
+3. **Styling**: Edit `/src/styles/` for global, use Tailwind classes for components
+4. **Layouts**: Modify `/src/layouts/` files for layout changes
+5. **Images**: Copy from `/temp-repos/steipete.com/assets/img/` to `/public/assets/img/` maintaining structure
+6. **Dependencies**: Always check with tooling, update to latest, test thoroughly, fix issues (never downgrade)
+
+### Image Path Convention
+- Pattern: `/assets/img/YEAR/POST-NAME/IMAGE.jpg`
+- Source: `/temp-repos/steipete.com/assets/img/`
+- Destination: `/public/assets/img/`
+</critical_notes>

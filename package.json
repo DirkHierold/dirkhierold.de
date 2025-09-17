@@ -9,6 +9,7 @@
     "preview": "astro preview",
     "astro": "astro",
     "deploy": "scripts/deploy.sh",
+    "generate-hero-images": "node generate-hero-images.js",
     "add-source-metadata": "node scripts/add-source-metadata.mjs",
     "remove-tags": "node scripts/remove-tags-from-posts.mjs",
     "format:check": "prettier --check . --plugin=prettier-plugin-astro",

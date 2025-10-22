@@ -9,13 +9,6 @@ export const SOCIALS = [
     active: true,
   },
   {
-    name: "X",
-    href: "https://x.com/DirkHierold",
-    linkTitle: `${SITE.title} on X`,
-    icon: "twitter",
-    active: true,
-  },
-  {
     name: "Mail",
     href: "mailto:dirk@dirkhierold.de",
     linkTitle: `Send an email to ${SITE.title}`,
@@ -25,12 +18,6 @@ export const SOCIALS = [
 ] as const;
 
 export const SHARE_LINKS = [
-  {
-    name: "X",
-    href: "https://x.com/intent/post?url=",
-    linkTitle: `Share this post on X`,
-    icon: "twitter",
-  },
   {
     name: "BlueSky",
     href: "https://bsky.app/intent/compose?text=",

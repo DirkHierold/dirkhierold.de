@@ -2,7 +2,6 @@
 import { SOCIALS } from "@/constants";
 import LinkButton from "./LinkButton.astro";
 import IconGitHub from "@/assets/icons/IconGitHub.svg";
-import IconBrandX from "@/assets/icons/IconBrandX.svg";
 import IconMail from "@/assets/icons/IconMail.svg";
 
 export interface Props {
@@ -13,7 +12,6 @@ const { centered = false } = Astro.props;
 
 const iconMap = {
   github: IconGitHub,
-  twitter: IconBrandX,
   mail: IconMail,
 };
 ---

@@ -75,10 +75,6 @@ export const SOCIAL_LINKS: SocialLink[] = [
     label: "GitHub",
   },
   {
-    href: "https://twitter.com/DirkHierold",
-    label: "Twitter",
-  },
-  {
     href: "/rss.xml",
     label: "RSS",
   },
@@ -87,7 +83,6 @@ export const SOCIAL_LINKS: SocialLink[] = [
 // Icon map for social media
 export const ICON_MAP: Record<string, string> = {
   GitHub: "github",
-  Twitter: "twitter",
   RSS: "rss",
   Email: "mail",
 };

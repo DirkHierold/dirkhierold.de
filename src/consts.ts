@@ -48,7 +48,7 @@ export const SITE: Site = {
     text: "Edit on GitHub",
     url: "https://github.com/DirkHierold/dirkhierold.de/edit/main/",
   },
-  dynamicOgImage: true,
+  dynamicOgImage: false,
   lang: "en",
   timezone: "America/Los_Angeles",
 };

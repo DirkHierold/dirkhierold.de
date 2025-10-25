@@ -99,7 +99,7 @@ export default defineConfig({
     react(),
     AstroPWA({
       registerType: "autoUpdate",
-      includeAssets: ["favicon.ico", "icon-192x192.png", "icon-512x512.png"],
+      includeAssets: ["favicon.ico", "icon-192x192.png", "icon-192x192-dark.png", "icon-512x512.png", "icon-512x512-dark.png"],
       manifest: {
         name: "Dirk Hierold",
         short_name: "dirkhierold",

@@ -99,7 +99,7 @@ export default defineConfig({
     react(),
     AstroPWA({
       registerType: "autoUpdate",
-      includeAssets: ["favicon.ico", "dirk-avatar.jpg"],
+      includeAssets: ["favicon.ico", "icon-192x192.png", "icon-512x512.png"],
       manifest: {
         name: "Dirk Hierold",
         short_name: "dirkhierold",
@@ -117,15 +117,15 @@ export default defineConfig({
             type: "image/x-icon",
           },
           {
-            src: "dirk-avatar.jpg",
+            src: "icon-192x192.png",
             sizes: "192x192",
-            type: "image/jpeg",
+            type: "image/png",
             purpose: "any",
           },
           {
-            src: "dirk-avatar.jpg",
+            src: "icon-512x512.png",
             sizes: "512x512",
-            type: "image/jpeg",
+            type: "image/png",
             purpose: "any maskable",
           },
         ],
